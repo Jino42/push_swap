@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:55:54 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/16 00:40:35 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/17 00:31:51 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@
 # define RRB 9
 # define RRR 10
 #define SWAP(a, b) (((a) ^= (b)), ((b) ^= (a)), ((a) ^= (b)))
+
+typedef struct		s_pi
+{
+	int				nb;
+	int				grp;
+}					t_pi;
 
 typedef struct		s_env
 {

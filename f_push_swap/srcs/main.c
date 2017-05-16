@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:54:44 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/16 00:00:18 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/17 00:35:26 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,29 @@ static int	verif_doublon(t_env *e)
 
 static int	init_env(t_env *e, int nb_arg, char **argv)
 {
-	int		i;
-	int		tmp;
+	int		i, j;
+	t_pi	tmp;
+	char	**c_tmp;
 
+	c_tmp = NULL;
 	e->nb_arg = nb_arg - 1;
 	i = 0;
+	tmp.grp = 1;
 	while (i < e->nb_arg)
 	{
-		if (!ft_isnumber(argv[i + 1]))
-			return (ft_error("Enrtrez des nombres !\n"));
-		tmp = ft_atoi(argv[i + 1]);
-		ft_lstinsert(&e->p_a, ft_lstnew(&tmp, sizeof(int)));
+//		if (!ft_isnumber(argv[i + 1]))
+//			return (ft_error("Enrtrez des nombres !\n"));
+		c_tmp = ft_strsplit(argv[i + 1], ' ');
+		j = 0;
+		while (c_tmp[j])
+		{
+			tmp.nb = ft_atoi(c_tmp[j]);
+			ft_lstinsert(&e->p_a, ft_lstnew(&tmp, sizeof(t_pi)));
+			ft_strdel(&c_tmp[j]);
+			j++;
+		}
+		free(c_tmp);
+		c_tmp = NULL;
 		i++;
 	}
 	ft_printf("Pile a : ");
