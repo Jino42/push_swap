@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:55:54 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/18 23:55:53 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/19 00:25:30 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ void	del_lst_pile(void *ptr, size_t size);
 int	loop_check(t_env *e);
 
 void        crea_var(t_env *e);
+
+int			algo_p_a(t_env *e);
+int			algo_p_b(t_env *e);
 
 
 int			op_sa(t_env *e);

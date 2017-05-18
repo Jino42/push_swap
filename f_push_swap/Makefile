@@ -6,7 +6,7 @@
 #    By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/02 18:45:43 by ntoniolo          #+#    #+#              #
-#    Updated: 2017/05/18 23:56:07 by ntoniolo         ###   ########.fr        #
+#    Updated: 2017/05/19 00:25:19 by ntoniolo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ SRC_PS = main.c \
 		 size_grp.c \
 		 do_op.c \
 		 print_pile.c \
+		 algo_p_a.c \
+		 algo_p_b.c \
 		 crea_var.c
 
 SRC_DIR = srcs/
