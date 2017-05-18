@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:55:54 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/17 00:31:51 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/17 23:41:03 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct		s_pi
 typedef struct		s_env
 {
 	int			nb_arg;
+	int			nb_op;
+	int			cur_grp;
 	int			nb_a;
 	t_list			*p_a;
 	int			nb_b;

@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 18:29:14 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/16 00:00:58 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/18 23:02:14 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,29 @@ void	print_tab (int *tab, int size)
 
 void	print_list(t_list *l)
 {
-	int		*tmp;
+	t_pi	*tmp;
+	int		tic_tac = 0;
+	int		cur_grp = 7845600;
 
 	while (l)
 	{
 		tmp = l->content;
-		ft_printf("%i ", *tmp);
+		if (tmp->grp != cur_grp)
+		{
+			cur_grp = tmp->grp;
+			tic_tac += 1;
+			ft_printf("\033[0m");
+			if (cur_grp == -1)
+				ft_printf("\033[33m");
+			else if (tic_tac & 1)
+				ft_printf("\033[36m");
+			else
+				ft_printf("\033[35m");
+		}
+		ft_printf("%i ", (tmp)->nb);
 		l = l->next;
 	}
+	ft_printf("\033[0m");
 	ft_printf("\n");
 }
 
