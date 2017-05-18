@@ -6,7 +6,7 @@
 #    By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/02 18:45:43 by ntoniolo          #+#    #+#              #
-#    Updated: 2017/05/17 23:58:49 by ntoniolo         ###   ########.fr        #
+#    Updated: 2017/05/18 23:56:07 by ntoniolo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,10 @@ SRC_PS = main.c \
 		 instruction_reverse_rotate.c \
 		 ft_lstlast.c \
 		 instruction_push.c \
+		 find_mediane.c \
+		 size_grp.c \
+		 do_op.c \
+		 print_pile.c \
 		 crea_var.c
 
 SRC_DIR = srcs/

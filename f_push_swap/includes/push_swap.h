@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:55:54 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/17 23:41:03 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/18 23:55:53 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PUSH_SWAP_H
 
 # include "../../libft/includes/ft_printf.h"
+
+# define VERB 1
 
 # define NB_OP 11
 # define SA 0 
@@ -48,13 +50,17 @@ typedef struct		s_env
 	int			(*exec[NB_OP])(struct s_env *e);
 }					t_env;
 
-void print_tab(int *tab, int size);
-void print_list(t_list *l);
-int	ft_isnumber(char *str);
-int ft_error(char *str);
-t_list		*ft_lstlast(t_list *l);
+void 	print_tab(int *tab, int size);
+void 	print_list(t_list *l);
+int		ft_isnumber(char *str);
+int		ft_error(char *str);
+t_list	*ft_lstlast(t_list *l);
 void	ft_remove_index_lst(t_list **l, size_t size, void (*f)(void *, size_t));
 
+int		find_mediane(t_list *l, int size);
+int		size_grp(t_list *l);
+void	do_op(t_env *e, int op, char verbose);
+void	print_pile(t_env *e);
 void	del_lst_pile(void *ptr, size_t size);
 
 int	loop_check(t_env *e);
