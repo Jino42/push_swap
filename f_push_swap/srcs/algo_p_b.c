@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 00:24:41 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/19 00:40:17 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/19 03:55:47 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,83 @@ int			case_b(t_env *e, int size)
 		do_op(e, PA, VERB);
 		do_op(e, RA, VERB);
 		e->nb_sort++;
+	}
+	else if (size == 3)
+	{
+		if (nb_1(e->p_b) < nb_2(e->p_b) &&
+			nb_2(e->p_b) < nb_3(e->p_b) &&
+			nb_1(e->p_b) < nb_3(e->p_b))
+		{
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+		}
+		else if (nb_1(e->p_b) < nb_2(e->p_b) &&
+				nb_2(e->p_b) > nb_3(e->p_b) &&
+				nb_1(e->p_b) < nb_3(e->p_b))
+		{
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+			do_op(e, SB, VERB);
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+		}
+		else if (nb_1(e->p_b) > nb_2(e->p_b) &&
+				nb_2(e->p_b) < nb_3(e->p_b) &&
+				nb_1(e->p_b) < nb_3(e->p_b))
+		{
+			do_op(e, SB, VERB);
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+		}
+		else if (nb_1(e->p_b) < nb_2(e->p_b) &&
+				nb_2(e->p_b) > nb_3(e->p_b) &&
+				nb_1(e->p_b) > nb_3(e->p_b))
+		{
+			do_op(e, PA, VERB);
+			do_op(e, SB, VERB);
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+			do_op(e, RA, VERB);
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+		}
+		else if (nb_1(e->p_b) > nb_2(e->p_b) &&
+				nb_2(e->p_b) > nb_3(e->p_b) &&
+				nb_1(e->p_b) > nb_3(e->p_b))
+		{
+			do_op(e, PA, VERB);
+			do_op(e, SB, VERB);
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+			do_op(e, RA, VERB);
+		}
+		else if (nb_1(e->p_b) > nb_2(e->p_b) &&
+				nb_2(e->p_b) < nb_3(e->p_b) &&
+				nb_1(e->p_b) > nb_3(e->p_b))
+		{
+			do_op(e, SB, VERB);
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+			do_op(e, SB, VERB);
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+			do_op(e, PA, VERB);
+			do_op(e, RA, VERB);
+		}
+		else
+			return (0);
 	}
 	else
 	{
@@ -65,7 +142,7 @@ int			algo_p_b(t_env *e)
 	int		size;
 
 	size = size_grp(e->p_b);
-	if (size <= 2)
+	if (size <= 3)
 	{
 		case_b(e, size);
 		return (1);

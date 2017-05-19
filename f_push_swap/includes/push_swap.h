@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:55:54 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/19 02:56:45 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/19 03:50:04 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define PUSH_SWAP_H
 
 # include "../../libft/includes/ft_printf.h"
+
+# define nb_1(lst) (((t_pi*)(lst->content))->nb)
+# define nb_2(lst) (((t_pi*)(lst->next->content))->nb)
+# define nb_3(lst) (((t_pi*)(lst->next->next->content))->nb)
 
 # define VERB 1
 

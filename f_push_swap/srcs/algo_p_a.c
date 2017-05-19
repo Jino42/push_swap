@@ -6,15 +6,11 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 00:18:19 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/19 03:44:29 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/19 04:42:07 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-# define nb_1(lst) (((t_pi*)(lst->content))->nb)
-# define nb_2(lst) (((t_pi*)(lst->next->content))->nb)
-# define nb_3(lst) (((t_pi*)(lst->next->next->content))->nb)
 
 int			case_a(t_env *e, int size)
 {
@@ -104,7 +100,6 @@ int			cut_p_a(t_env *e, int pivot, int grp)
 {
 	t_pi	*pi;
 	int		nb_ra;
-
 	nb_ra = 0;
 	while (1)
 	{
@@ -124,6 +119,13 @@ int			cut_p_a(t_env *e, int pivot, int grp)
 			do_op(e, RA, VERB);
 			nb_ra++;
 		}
+/*		else if (pi->nb < pivot && ((t_pi*)(e->p_a->next->content))->grp == grp &&
+						((t_pi*)(e->p_a->next->content))->nb < pivot &&
+							pi->nb < ((t_pi*)(e->p_a->next->content))->nb)
+		{
+			do_op(e, SA, VERB);
+			print_pile(e);
+		}*/
 		else
 		{
 			(pi)->grp = e->cur_grp + 2;
