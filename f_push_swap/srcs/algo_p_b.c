@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 00:24:41 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/19 00:29:29 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/19 00:40:17 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,21 @@ int			case_b(t_env *e, int size)
 	if (size == 1)
 	{
 		((t_pi*)(e->p_b->content))->grp = -1;
-		e->exec[PA](e);
-		ft_printf("%s\n", e->op[PA]);
-		e->exec[RA](e);
-		ft_printf("%s\n", e->op[RA]);
-		e->nb_op++;
-		e->nb_op++;
+		do_op(e, PA, VERB);
+		do_op(e, RA, VERB);
+		e->nb_sort++;
 	}
 	else
 	{
 		if (((t_pi*)(e->p_b->content))->nb > ((t_pi*)(e->p_b->next->content))->nb)
-		{
-			e->exec[SB](e);
-			ft_printf("%s\n", e->op[SB]);
-			e->nb_op++;
-		}
+			do_op(e, SB, VERB);
 		((t_pi*)(e->p_b->content))->grp = -1;
-		e->exec[PA](e);
-		ft_printf("%s\n", e->op[PA]);
-		e->exec[RA](e);
-		ft_printf("%s\n", e->op[RA]);
-		e->nb_op++;
-		e->nb_op++;
+		do_op(e, PA, VERB);
+		do_op(e, RA, VERB);
 		((t_pi*)(e->p_b->content))->grp = -1;
-		e->exec[PA](e);
-		ft_printf("%s\n", e->op[PA]);
-		e->exec[RA](e);
-		ft_printf("%s\n", e->op[RA]);
-		e->nb_op++;
-		e->nb_op++;
+		do_op(e, PA, VERB);
+		do_op(e, RA, VERB);
+		e->nb_sort += 2;
 	}
 	return (1);
 }

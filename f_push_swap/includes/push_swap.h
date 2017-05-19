@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:55:54 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/19 00:25:30 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/19 01:23:31 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct		s_pi
 
 typedef struct		s_env
 {
+	int			nb_sort;
 	int			nb_arg;
 	int			nb_op;
 	int			cur_grp;
@@ -48,6 +49,7 @@ typedef struct		s_env
 	t_list			*p_b;
 	char		op[NB_OP][4];
 	int			(*exec[NB_OP])(struct s_env *e);
+	t_list		*solve;
 }					t_env;
 
 void 	print_tab(int *tab, int size);

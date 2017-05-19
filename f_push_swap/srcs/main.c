@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:54:44 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/18 21:46:08 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/19 02:46:13 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,46 @@ static void free_env(t_env *e)
 {
 	free(e->p_a);
 	free(e->p_b);
+
+	t_list	*lst_past;
+	t_list	*lst;
+	lst_past = NULL;
+	lst = e->solve;
+	while (lst)
+	{
+		if (lst_past)
+			free(lst_past);
+		free(lst->content);
+		lst_past = lst;
+		lst = lst->next;
+	}
+	if (lst_past)
+		free(lst_past);
+	lst_past = NULL;
+	lst = e->p_a;
+	while (lst)
+	{
+		ft_printf("lol");
+		if (lst_past)
+			free(lst_past);
+		//free(lst->content);
+		lst_past = lst;
+		lst = lst->next;
+	}
+	if (lst_past)
+		free(lst_past);/*
+	lst_past = NULL;
+	lst = e->p_b;
+	while (lst)
+	{
+		if (lst_past)
+			free(lst_past);
+		free(lst->content);
+		lst_past = lst;
+		lst = lst->next;
+	}
+	if (lst_past)
+		free(lst_past);*/
 }
 
 int		main(int argc, char **argv)

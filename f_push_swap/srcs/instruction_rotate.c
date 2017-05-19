@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 21:38:38 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/18 21:40:27 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/19 02:44:24 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		op_rb(t_env *e)
 {
 	if (e->nb_b > 1)
 	{
-		ft_lstinsert(&e->p_b, ft_lstnew(((t_pi**)(e->p_b->content)), sizeof(t_pi*)));
+		ft_lstinsert(&e->p_b, ft_lstnew(((e->p_b->content)), sizeof(t_pi*)));
 		ft_remove_index_lst(&e->p_b, 0, &del_lst_pile);
 	}
 	return (1);
