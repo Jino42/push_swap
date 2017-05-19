@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:55:54 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/19 01:23:31 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/19 02:56:45 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct		s_env
 	char		op[NB_OP][4];
 	int			(*exec[NB_OP])(struct s_env *e);
 	t_list		*solve;
+	t_list		*final_solve;
 }					t_env;
 
 void 	print_tab(int *tab, int size);
@@ -64,7 +65,7 @@ int		size_grp(t_list *l);
 void	do_op(t_env *e, int op, char verbose);
 void	print_pile(t_env *e);
 void	del_lst_pile(void *ptr, size_t size);
-
+int		join_op(t_env *e);
 int	loop_check(t_env *e);
 
 void        crea_var(t_env *e);

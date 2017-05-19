@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:54:44 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/19 02:46:13 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/19 02:55:34 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,6 @@ static int	init_env(t_env *e, int nb_arg, char **argv)
 
 static void free_env(t_env *e)
 {
-	free(e->p_a);
-	free(e->p_b);
-
 	t_list	*lst_past;
 	t_list	*lst;
 	lst_past = NULL;
@@ -90,19 +87,34 @@ static void free_env(t_env *e)
 	}
 	if (lst_past)
 		free(lst_past);
+
 	lst_past = NULL;
-	lst = e->p_a;
+	lst = e->final_solve;
 	while (lst)
 	{
-		ft_printf("lol");
 		if (lst_past)
 			free(lst_past);
-		//free(lst->content);
+		free(lst->content);
 		lst_past = lst;
 		lst = lst->next;
 	}
 	if (lst_past)
-		free(lst_past);/*
+		free(lst_past);
+
+
+
+	lst_past = NULL;
+	lst = e->p_a;
+	while (lst)
+	{
+		if (lst_past)
+			free(lst_past);
+		free(lst->content);
+		lst_past = lst;
+		lst = lst->next;
+	}
+	if (lst_past)
+		free(lst_past);
 	lst_past = NULL;
 	lst = e->p_b;
 	while (lst)
@@ -114,7 +126,7 @@ static void free_env(t_env *e)
 		lst = lst->next;
 	}
 	if (lst_past)
-		free(lst_past);*/
+		free(lst_past);
 }
 
 int		main(int argc, char **argv)
@@ -127,7 +139,10 @@ int		main(int argc, char **argv)
 	if (!(init_env(&e, argc, argv)))
 		return (0);
 	if (loop_check(&e))
+	{
+		join_op(&e);
 		ft_printf("OK\n");
+	}
 	else
 		ft_printf("KO\n");
 	free_env(&e);
