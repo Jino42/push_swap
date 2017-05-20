@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:54:44 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/19 02:55:34 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/21 00:21:28 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ static int	init_env(t_env *e, int nb_arg, char **argv)
 	while (i < e->nb_arg)
 	{
 		ft_bzero(&tmp, sizeof(t_pi));
-//		if (!ft_isnumber(argv[i + 1]))
-//			return (ft_error("Enrtrez des nombres !\n"));
 		c_tmp = ft_strsplit(argv[i + 1], ' ');
+		if (!ft_isnumber(c_tmp))
+			return (ft_error("Enrtrez des nombres !\n"));
 		j = 0;
 		while (c_tmp[j])
 		{
@@ -54,6 +54,7 @@ static int	init_env(t_env *e, int nb_arg, char **argv)
 			ft_lstinsert(&e->p_a, ft_lstnew(&tmp, sizeof(t_pi*)));
 			ft_strdel(&c_tmp[j]);
 			j++;
+			e->nb_a++;
 		}
 		free(c_tmp);
 		c_tmp = NULL;
@@ -64,7 +65,6 @@ static int	init_env(t_env *e, int nb_arg, char **argv)
 	ft_printf("Pile b : ");
 	print_list(e->p_b);
 	ft_printf("Nb_nb : %i\n", e->nb_arg);
-	e->nb_a = e->nb_arg;
 	if (!verif_doublon(e))
 		return (ft_error("Doublon.\n"));
 	crea_var(e);
@@ -129,6 +129,22 @@ static void free_env(t_env *e)
 		free(lst_past);
 }
 
+int		make_flag(t_env *e, int argc, char **argv)
+{
+	int i;
+
+	i = 0;
+	while (i + 1 < argc)
+	{
+		if (argv[i + 1][0] == '-')
+		{
+			('v' == argv[i + 1][1]) ? (e->flag |= FLAG_V) : 0;
+		}
+		i++;
+	}
+	return (1);
+}
+
 int		main(int argc, char **argv)
 {
 	t_env	e;
@@ -136,8 +152,10 @@ int		main(int argc, char **argv)
 	if (argc == 1)
 		return (ft_error("Error\n"));
 	ft_bzero(&e, sizeof(t_env));
+	make_flag(&e, argc, argv);
 	if (!(init_env(&e, argc, argv)))
 		return (0);
+	sort_tab(&e);
 	if (loop_check(&e))
 	{
 		join_op(&e);

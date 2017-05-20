@@ -6,7 +6,7 @@
 #    By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/02 18:45:43 by ntoniolo          #+#    #+#              #
-#    Updated: 2017/05/19 02:56:31 by ntoniolo         ###   ########.fr        #
+#    Updated: 2017/05/21 00:47:27 by ntoniolo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,15 @@ SRC_PS = main.c \
 		 find_mediane.c \
 		 size_grp.c \
 		 do_op.c \
+		 verif_order.c \
 		 print_pile.c \
 		 algo_p_a.c \
 		 algo_p_b.c \
 		 join_op.c \
-		 crea_var.c
+		 sort_tab.c \
+		 crea_var.c \
+		 case_p_a.c \
+		 case_p_b.c
 
 SRC_DIR = srcs/
 

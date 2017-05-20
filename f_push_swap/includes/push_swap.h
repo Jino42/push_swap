@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:55:54 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/19 03:50:04 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/21 00:46:24 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # define nb_2(lst) (((t_pi*)(lst->next->content))->nb)
 # define nb_3(lst) (((t_pi*)(lst->next->next->content))->nb)
 
-# define VERB 1
+# define FLAG_V (1 << 1)
+# define SORTED (2 << 2)
 
 # define NB_OP 11
 # define SA 0 
@@ -55,28 +56,35 @@ typedef struct		s_env
 	int			(*exec[NB_OP])(struct s_env *e);
 	t_list		*solve;
 	t_list		*final_solve;
+	int			*tab;
+	char		flag;
 }					t_env;
 
 void 	print_tab(int *tab, int size);
 void 	print_list(t_list *l);
-int		ft_isnumber(char *str);
+int		ft_isnumber(char **str);
 int		ft_error(char *str);
 t_list	*ft_lstlast(t_list *l);
 void	ft_remove_index_lst(t_list **l, size_t size, void (*f)(void *, size_t));
 
 int		find_mediane(t_list *l, int size);
 int		size_grp(t_list *l);
-void	do_op(t_env *e, int op, char verbose);
+void	do_op(t_env *e, int op, char flag);
 void	print_pile(t_env *e);
 void	del_lst_pile(void *ptr, size_t size);
 int		join_op(t_env *e);
+
 int	loop_check(t_env *e);
+int		sort_tab(t_env *e);
 
 void        crea_var(t_env *e);
+int			verif_order(t_env *e);
 
 int			algo_p_a(t_env *e);
-int			algo_p_b(t_env *e);
+int			case_a(t_env *e, int size);
 
+int			algo_p_b(t_env *e);
+int			case_b(t_env *e, int size);
 
 int			op_sa(t_env *e);
 int			op_sb(t_env *e);

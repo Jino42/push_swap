@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 01:28:27 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/19 03:01:11 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/20 23:49:07 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int		join_op(t_env *e)
 	int		op;
 	t_list	*lst;
 
+	if (!e->solve)
+		return (1);
 	lst = e->solve;
 	final_nb = 0;
 	while (lst->next)

@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_op.c                                            :+:      :+:    :+:   */
+/*   verif_order.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/18 23:51:15 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/21 00:31:16 by ntoniolo         ###   ########.fr       */
+/*   Created: 2017/05/19 05:35:47 by ntoniolo          #+#    #+#             */
+/*   Updated: 2017/05/19 05:51:06 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		do_op(t_env *e, int op, char flag)
+int verif_order(t_env *e)
 {
-	if (flag & SORTED)
+	t_list	*i;
+
+	if (e->nb_b)
+		return (0);
+	i = e->p_a;
+	while (i->next)
 	{
-		((t_pi*)(e->p_a->content))->grp = -1;
-		e->nb_sort++;
+		if (((t_pi*)(i->content))->nb > ((t_pi*)(i->next->content))->nb)
+			return (0);
+		i = i->next;
 	}
-	e->exec[op](e);
-	if (flag & FLAG_V)
-		ft_printf("%s\n", e->op[op]);
-	ft_lstinsert(&e->solve, ft_lstnew(&op, sizeof(int*)));
-	e->nb_op++;
+	return (1);
 }

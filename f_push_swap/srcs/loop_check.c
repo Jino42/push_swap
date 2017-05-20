@@ -6,27 +6,11 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 18:36:03 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/19 00:32:59 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/21 00:32:03 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-
-static int verif_order(t_env *e)
-{
-	t_list	*i;
-
-	if (e->nb_b)
-		return (0);
-	i = e->p_a;
-	while (i->next)
-	{
-		if (((t_pi*)(i->content))->nb > ((t_pi*)(i->next->content))->nb)
-			return (0);
-		i = i->next;
-	}
-	return (1);
-}
 
 int			my_algo(t_env *e)
 {

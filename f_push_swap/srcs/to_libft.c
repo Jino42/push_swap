@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 18:29:14 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/18 23:02:14 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/21 00:01:42 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	print_list(t_list *l)
 			ft_printf("\033[0m");
 			if (cur_grp == -1)
 				ft_printf("\033[33m");
+			else if (cur_grp == -2)
+				ft_printf("\033[32m");
 			else if (tic_tac & 1)
 				ft_printf("\033[36m");
 			else
@@ -53,15 +55,22 @@ void	print_list(t_list *l)
 	ft_printf("\n");
 }
 
-int	ft_isnumber(char *str)
+int	ft_isnumber(char **str)
 {
 	int i;
+	int j;
 
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]))
-			return (0);
+		j = 0;
+		while (str[i][j])
+		{
+			if ((!ft_isdigit(str[i][j]) && str[i][j] != '-') ||
+				 (str[i][j] == '-' && str[i][j + 1] == '\0'))
+				return (0);
+			j++;
+		}
 		i++;
 	}
 	return (1);
