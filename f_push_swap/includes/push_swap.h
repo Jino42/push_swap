@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:55:54 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/21 00:46:24 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/21 01:52:06 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 
 # include "../../libft/includes/ft_printf.h"
 
-# define nb_1(lst) (((t_pi*)(lst->content))->nb)
-# define nb_2(lst) (((t_pi*)(lst->next->content))->nb)
-# define nb_3(lst) (((t_pi*)(lst->next->next->content))->nb)
+
+# define NB_1(lst) (((t_pi*)(lst->content))->nb)
+# define NB_2(lst) (((t_pi*)(lst->next->content))->nb)
+# define NB_3(lst) (((t_pi*)(lst->next->next->content))->nb)
+
+# define OP_1(lst) (*(int*)(lst->content))
+# define OP_2(lst) (*(int*)(lst->next->content))
 
 # define FLAG_V (1 << 1)
-# define SORTED (2 << 2)
+# define FLAG_N (1 << 2)
+# define SORTED (1 << 3)
 
 # define NB_OP 11
 # define SA 0 

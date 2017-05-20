@@ -6,14 +6,11 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 01:28:27 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/20 23:49:07 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/21 01:08:45 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-# define op_1(lst) (*(int*)(lst->content))
-# define op_2(lst) (*(int*)(lst->next->content))
 
 int		join_op(t_env *e)
 {
@@ -27,12 +24,11 @@ int		join_op(t_env *e)
 	final_nb = 0;
 	while (lst->next)
 	{
-		//ft_printf("%s | %s\n", e->op[op_1(lst)], e->op[op_2(lst)]);
-		if (op_1(lst) == SA && op_2(lst) == SB)
+		if (OP_1(lst) == SA && OP_2(lst) == SB)
 			op = SS;
-		else if (op_1(lst) == RA && op_2(lst) == RB)
+		else if (OP_1(lst) == RA && OP_2(lst) == RB)
 			op = RR;
-		else if (op_1(lst) == RRA && op_2(lst) == RRB)
+		else if (OP_1(lst) == RRA && OP_2(lst) == RRB)
 			op = RRR;
 		else
 			op = (*(int*)(lst->content));

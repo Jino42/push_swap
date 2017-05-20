@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:54:44 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/21 00:21:28 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/21 01:32:46 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ int		make_flag(t_env *e, int argc, char **argv)
 		if (argv[i + 1][0] == '-')
 		{
 			('v' == argv[i + 1][1]) ? (e->flag |= FLAG_V) : 0;
+			('n' == argv[i + 1][1]) ? (e->flag |= FLAG_N) : 0;
 		}
 		i++;
 	}

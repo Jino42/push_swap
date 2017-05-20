@@ -6,13 +6,13 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 00:18:19 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/21 00:57:29 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/21 01:10:31 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			trick(t_env *e)
+static int	trick(t_env *e)
 {
 	if (e->tab[e->nb_sort] == ((t_pi*)(e->p_a->content))->nb)
 	{
@@ -22,7 +22,17 @@ int			trick(t_env *e)
 	return (0);
 }
 
-int			cut_p_a(t_env *e, int pivot, int grp)
+static int	come_back(t_env *e, int nb_ra)
+{
+	while (nb_ra && e->nb_sort)
+	{
+		do_op(e, RRA, e->flag);
+		nb_ra--;
+	}
+	return (1);
+}
+
+static int	cut_p_a(t_env *e, int pivot, int grp)
 {
 	t_pi	*pi;
 	int		nb_ra;
@@ -31,24 +41,17 @@ int			cut_p_a(t_env *e, int pivot, int grp)
 	while (1)
 	{
 		pi = e->p_a->content;
-		if ((pi)->grp != grp)
-		{
-			while (nb_ra && e->nb_sort)
-			{
-				do_op(e, RRA, e->flag);
-				nb_ra--;
-			}
-			return (1);
-		}
+		if (pi->grp != grp)
+			return (come_back(e, nb_ra));
 		if (pi->nb > pivot)
 		{
-			(pi)->grp = e->cur_grp + 1;
+			pi->grp = e->cur_grp + 1;
 			do_op(e, RA, e->flag);
 			nb_ra++;
 		}
 		else
 		{
-			(pi)->grp = e->cur_grp + 2;
+			pi->grp = e->cur_grp + 2;
 			do_op(e, PB, e->flag);
 		}
 		print_pile(e);

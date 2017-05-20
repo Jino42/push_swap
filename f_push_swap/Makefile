@@ -6,7 +6,7 @@
 #    By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/02 18:45:43 by ntoniolo          #+#    #+#              #
-#    Updated: 2017/05/21 00:47:27 by ntoniolo         ###   ########.fr        #
+#    Updated: 2017/05/21 01:52:02 by ntoniolo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,9 @@ NAME = push_swap
 DIR_LFT = ../libft/
 
 FLAGS = -Wall -Werror -Wextra -g
+
+#SDL = -L/usr/local/lib/ -I/usr/local/include
+SDL =
 
 SRC_PS = main.c \
 		 to_libft.c \
@@ -55,7 +58,7 @@ OBJ_DIR = objs/
 all: start lib $(NAME) end
 
 $(NAME): $(OBJ_DIR) $(addprefix $(OBJ_DIR), $(OBJET_PS)) $(INC_FILES)
-	@$(CC) -I$(INC) $(addprefix $(OBJ_DIR), $(OBJET_PS)) -L./$(DIR_LFT) -lft -o $(NAME)
+	@$(CC) $(SDL) -I$(INC) $(addprefix $(OBJ_DIR), $(OBJET_PS)) -L./$(DIR_LFT) -lft -o $(NAME)
 
 $(OBJ_DIR) :
 	@mkdir $(OBJ_DIR)
@@ -69,7 +72,7 @@ end:
 $(OBJ_DIR)%.o: $(addprefix $(SRC_DIR), %.c) $(INC_FILES)
 	@echo "\033[34m$^ \033[0m-> \033[1m\033[37m$@\033[0m"
 	#@$(CC) $(FLAGS) -I$(INC) -c $^ -o $@
-	@($(CC) $(FLAGS) -I$(INC) -c -o $@ $<)
+	@($(CC) $(FLAGS) $(SDL) -I$(INC) -c -o $@ $<)
 
 lib:
 	@(cd $(DIR_LFT) && $(MAKE))

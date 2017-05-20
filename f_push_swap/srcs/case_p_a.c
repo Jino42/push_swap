@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 00:39:59 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/21 00:48:55 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/21 01:09:13 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static int		verif_3_arg_3(t_env *e)
 {
-	if (nb_1(e->p_a) > nb_2(e->p_a) &&
-			nb_2(e->p_a) > nb_3(e->p_a) &&
-			nb_1(e->p_a) > nb_3(e->p_a))
+	if (NB_1(e->p_a) > NB_2(e->p_a) &&
+			NB_2(e->p_a) > NB_3(e->p_a) &&
+			NB_1(e->p_a) > NB_3(e->p_a))
 	{
 		do_op(e, PB, e->flag);
 		do_op(e, SA, e->flag);
@@ -26,9 +26,9 @@ static int		verif_3_arg_3(t_env *e)
 		do_op(e, RA, e->flag | SORTED);
 		return (1);
 	}
-	else if (nb_1(e->p_a) > nb_2(e->p_a) &&
-			nb_2(e->p_a) < nb_3(e->p_a) &&
-			nb_1(e->p_a) > nb_3(e->p_a))
+	else if (NB_1(e->p_a) > NB_2(e->p_a) &&
+			NB_2(e->p_a) < NB_3(e->p_a) &&
+			NB_1(e->p_a) > NB_3(e->p_a))
 	{
 		do_op(e, SA, e->flag);
 		do_op(e, RA, e->flag | SORTED);
@@ -42,9 +42,9 @@ static int		verif_3_arg_3(t_env *e)
 
 static int		verif_3_arg_2(t_env *e)
 {
-	if (nb_1(e->p_a) > nb_2(e->p_a) &&
-			nb_2(e->p_a) < nb_3(e->p_a) &&
-			nb_1(e->p_a) < nb_3(e->p_a))
+	if (NB_1(e->p_a) > NB_2(e->p_a) &&
+			NB_2(e->p_a) < NB_3(e->p_a) &&
+			NB_1(e->p_a) < NB_3(e->p_a))
 	{
 		do_op(e, SA, e->flag);
 		do_op(e, RA, e->flag | SORTED);
@@ -52,9 +52,9 @@ static int		verif_3_arg_2(t_env *e)
 		do_op(e, RA, e->flag | SORTED);
 		return (1);
 	}
-	else if (nb_1(e->p_a) < nb_2(e->p_a) &&
-			nb_2(e->p_a) > nb_3(e->p_a) &&
-			nb_1(e->p_a) > nb_3(e->p_a))
+	else if (NB_1(e->p_a) < NB_2(e->p_a) &&
+			NB_2(e->p_a) > NB_3(e->p_a) &&
+			NB_1(e->p_a) > NB_3(e->p_a))
 	{
 		do_op(e, PB, e->flag);
 		do_op(e, SA, e->flag);
@@ -69,18 +69,18 @@ static int		verif_3_arg_2(t_env *e)
 
 static int		verif_3_arg(t_env *e)
 {
-	if (nb_1(e->p_a) < nb_2(e->p_a) &&
-			nb_2(e->p_a) < nb_3(e->p_a) &&
-			nb_1(e->p_a) < nb_3(e->p_a))
+	if (NB_1(e->p_a) < NB_2(e->p_a) &&
+			NB_2(e->p_a) < NB_3(e->p_a) &&
+			NB_1(e->p_a) < NB_3(e->p_a))
 	{
 		do_op(e, RA, e->flag | SORTED);
 		do_op(e, RA, e->flag | SORTED);
 		do_op(e, RA, e->flag | SORTED);
 		return (1);
 	}
-	else if (nb_1(e->p_a) < nb_2(e->p_a) &&
-			nb_2(e->p_a) > nb_3(e->p_a) &&
-			nb_1(e->p_a) < nb_3(e->p_a))
+	else if (NB_1(e->p_a) < NB_2(e->p_a) &&
+			NB_2(e->p_a) > NB_3(e->p_a) &&
+			NB_1(e->p_a) < NB_3(e->p_a))
 	{
 		do_op(e, RA, e->flag | SORTED);
 		do_op(e, SA, e->flag);
@@ -104,7 +104,7 @@ int				case_a(t_env *e, int size)
 	}
 	else
 	{
-		if (nb_1(e->p_a) > nb_2(e->p_a))
+		if (NB_1(e->p_a) > NB_2(e->p_a))
 			do_op(e, SA, e->flag);
 		do_op(e, RA, e->flag | SORTED);
 		do_op(e, RA, e->flag | SORTED);
