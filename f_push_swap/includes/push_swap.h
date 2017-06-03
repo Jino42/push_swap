@@ -6,15 +6,19 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:55:54 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/21 01:52:06 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/22 21:18:51 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../../libft/includes/ft_printf.h"
+# define WIDTH 1000
+# define HEIGHT 1000
 
+# include "../../libft/includes/ft_printf.h"
+# include "../../libmlxji/includes/mlxji.h"
+# include <mlx.h>
 
 # define NB_1(lst) (((t_pi*)(lst->content))->nb)
 # define NB_2(lst) (((t_pi*)(lst->next->content))->nb)
@@ -63,6 +67,12 @@ typedef struct		s_env
 	t_list		*final_solve;
 	int			*tab;
 	char		flag;
+	char		nb_flag;
+
+	void		*mlx;
+	void		*win;
+	t_img		*img;
+	int			key[269];
 }					t_env;
 
 void 	print_tab(int *tab, int size);
@@ -72,24 +82,33 @@ int		ft_error(char *str);
 t_list	*ft_lstlast(t_list *l);
 void	ft_remove_index_lst(t_list **l, size_t size, void (*f)(void *, size_t));
 
-int		find_mediane(t_list *l, int size);
+int		sort_tab(t_env *e);
 int		size_grp(t_list *l);
-void	do_op(t_env *e, int op, char flag);
 void	print_pile(t_env *e);
 void	del_lst_pile(void *ptr, size_t size);
 int		join_op(t_env *e);
 
-int	loop_check(t_env *e);
-int		sort_tab(t_env *e);
+int		loop_check(t_env *e);
+int		find_mediane(t_list *l, int size);
+void	do_op(t_env *e, int op, char flag);
 
 void        crea_var(t_env *e);
 int			verif_order(t_env *e);
+
+int			my_algo(t_env *e);
 
 int			algo_p_a(t_env *e);
 int			case_a(t_env *e, int size);
 
 int			algo_p_b(t_env *e);
 int			case_b(t_env *e, int size);
+
+int			graph_loop(t_env *e);
+int			graph_main(t_env *e);
+int			graph_key_on(int keycode, t_env *e);
+int			graph_key_off(int keycode, t_env *e);
+int			graph_aff(t_env *e);
+void		graph_case(t_env *e, t_pxtopx *to, t_px *px);
 
 int			op_sa(t_env *e);
 int			op_sb(t_env *e);

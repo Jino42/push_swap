@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 00:18:19 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/21 01:10:31 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/23 00:22:22 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static int	cut_p_a(t_env *e, int pivot, int grp)
 			pi->grp = e->cur_grp + 2;
 			do_op(e, PB, e->flag);
 		}
-		print_pile(e);
 	}
 	return (1);
 }
@@ -76,6 +75,5 @@ int			algo_p_a(t_env *e)
 	cut_p_a(e,
 	find_mediane(e->p_a, size),
 	((t_pi*)(e->p_a->content))->grp);
-	print_pile(e);
 	return (1);
 }

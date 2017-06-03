@@ -6,11 +6,26 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 18:51:47 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/15 22:09:55 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/22 23:46:00 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <checker.h>
+#include "push_swap.h"
+
+static void	crea_var_neg(t_env *e)
+{
+	e->exec_neg[0] = &op_sa;
+	e->exec_neg[1] = &op_sb;
+	e->exec_neg[2] = &op_ss;
+	e->exec_neg[3] = &op_pb;
+	e->exec_neg[4] = &op_pa;
+	e->exec_neg[5] = &op_rra;
+	e->exec_neg[6] = &op_rrb;
+	e->exec_neg[7] = &op_rrr;
+	e->exec_neg[8] = &op_ra;
+	e->exec_neg[9] = &op_rb;
+	e->exec_neg[10] = &op_rr;
+}
 
 void		crea_var(t_env *e)
 {
@@ -36,4 +51,5 @@ void		crea_var(t_env *e)
 	e->exec[9] = &op_rrb;
 	strcpy(e->op[10], "rrr");
 	e->exec[10] = &op_rrr;
+	crea_var_neg(e);
 }

@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:54:44 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/21 01:32:46 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/23 00:23:43 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ static int	init_env(t_env *e, int nb_arg, char **argv)
 	char	**c_tmp;
 
 	c_tmp = NULL;
-	e->nb_arg = nb_arg - 1;
-	i = 0;
-	while (i < e->nb_arg)
+	e->nb_arg = nb_arg - 1 - e->nb_flag;
+	i = e->nb_flag;
+	while (i < e->nb_arg + e->nb_flag)
 	{
-		ft_bzero(&tmp, sizeof(t_pi));
 		c_tmp = ft_strsplit(argv[i + 1], ' ');
 		if (!ft_isnumber(c_tmp))
 			return (ft_error("Enrtrez des nombres !\n"));
 		j = 0;
 		while (c_tmp[j])
 		{
+			ft_bzero(&tmp, sizeof(t_pi));
 			tmp.nb = ft_atoi(c_tmp[j]);
 			ft_lstinsert(&e->p_a, ft_lstnew(&tmp, sizeof(t_pi*)));
 			ft_strdel(&c_tmp[j]);
@@ -60,11 +60,6 @@ static int	init_env(t_env *e, int nb_arg, char **argv)
 		c_tmp = NULL;
 		i++;
 	}
-	ft_printf("Pile a : ");
-	print_list(e->p_a);
-	ft_printf("Pile b : ");
-	print_list(e->p_b);
-	ft_printf("Nb_nb : %i\n", e->nb_arg);
 	if (!verif_doublon(e))
 		return (ft_error("Doublon.\n"));
 	crea_var(e);
@@ -127,6 +122,7 @@ static void free_env(t_env *e)
 	}
 	if (lst_past)
 		free(lst_past);
+	free(e->tab);
 }
 
 int		make_flag(t_env *e, int argc, char **argv)
@@ -138,8 +134,18 @@ int		make_flag(t_env *e, int argc, char **argv)
 	{
 		if (argv[i + 1][0] == '-')
 		{
-			('v' == argv[i + 1][1]) ? (e->flag |= FLAG_V) : 0;
-			('n' == argv[i + 1][1]) ? (e->flag |= FLAG_N) : 0;
+			if ('v' == argv[i + 1][1])
+			{
+				e->flag |= FLAG_V;
+				e->nb_flag++;
+			}
+			else if ('n' == argv[i + 1][1])
+			{
+				e->flag |= FLAG_N;
+				e->nb_flag++;
+			}
+			else
+				return (ft_error("Flags Problems\n"));
 		}
 		i++;
 	}
@@ -153,17 +159,14 @@ int		main(int argc, char **argv)
 	if (argc == 1)
 		return (ft_error("Error\n"));
 	ft_bzero(&e, sizeof(t_env));
-	make_flag(&e, argc, argv);
+	if (!(make_flag(&e, argc, argv)))
+		return (0);
 	if (!(init_env(&e, argc, argv)))
 		return (0);
 	sort_tab(&e);
-	if (loop_check(&e))
-	{
-		join_op(&e);
-		ft_printf("OK\n");
-	}
-	else
-		ft_printf("KO\n");
+	loop_check(&e);
+	if (e.flag & FLAG_N)
+		graph_main(&e);
 	free_env(&e);
 	return (0);
 }

@@ -6,11 +6,11 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 21:17:35 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/15 21:57:45 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/05/18 00:34:10 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 void	ft_remove_index_lst(t_list **l, size_t size, void (*f)(void *, size_t))
 {
