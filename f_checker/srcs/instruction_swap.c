@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 18:32:31 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/21 01:09:56 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/04 20:45:42 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,28 @@
 
 int		op_sa(t_env *e)
 {
+	t_pi	tmp;
+
 	if (e->nb_a > 1)
 	{
-		SWAP(NB_1(e->p_a), NB_2(e->p_a));
-		SWAP(((t_pi*)(e->p_a->content))->grp,
-			((t_pi*)(e->p_a->next->content))->grp);
+		tmp = *((t_pi*)(e->p_a->content));
+		*((t_pi*)(e->p_a->content)) =
+				*((t_pi*)(e->p_a->next->content));
+		*((t_pi*)(e->p_a->next->content)) = tmp;
 	}
 	return (1);
 }
 
 int		op_sb(t_env *e)
 {
+	t_pi	tmp;
+
 	if (e->nb_b > 1)
 	{
-		SWAP(NB_1(e->p_b), NB_2(e->p_b));
-		SWAP(((t_pi*)(e->p_b->content))->grp,
-				((t_pi*)(e->p_b->next->content))->grp);
+		tmp = *((t_pi*)(e->p_b->content));
+		*((t_pi*)(e->p_b->content)) =
+				*((t_pi*)(e->p_b->next->content));
+		*((t_pi*)(e->p_b->next->content)) = tmp;
 	}
 	return (1);
 }

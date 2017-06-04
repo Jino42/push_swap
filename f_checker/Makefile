@@ -6,7 +6,7 @@
 #    By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/02 18:45:43 by ntoniolo          #+#    #+#              #
-#    Updated: 2017/06/04 23:13:27 by ntoniolo         ###   ########.fr        #
+#    Updated: 2017/06/05 00:06:04 by ntoniolo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ LIB_MLX = -L./../libmlxji/ -lmlxji -L/usr/local/lib/ -I/usr/local/include -lmlx 
 
 SRC_PS = main.c \
 		 free_env.c \
+		 take_number.c \
 		 pars.c \
 		 to_libft.c \
 		 loop_check.c \
@@ -39,6 +40,7 @@ SRC_PS = main.c \
 
 SRC_GRAPH = graph_main.c \
 			graph_loop.c \
+			graph_aff_pile.c \
 			graph_key_on.c \
 			graph_aff.c \
 			graph_case.c \
@@ -61,10 +63,11 @@ OBJ_GRAPH = objs/graph/
 
 .PHONY: all, clean, fclean, re, $(NAME), lft, start, end
 
-all: start lib $(NAME) end
+all: lib $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJ_GRAPH) $(addprefix $(OBJ_DIR), $(OBJET_PS)) $(addprefix $(OBJ_GRAPH), $(OBJET_GRAPH)) $(INC_FILES)
 	@$(CC) -I$(INC) $(addprefix $(OBJ_DIR), $(OBJET_PS)) $(addprefix $(OBJ_GRAPH), $(OBJET_GRAPH)) -L./$(DIR_LFT) $(LIB_MLX) -lft -o $(NAME)
+	@echo "\033[4m\033[1m\033[32m>$(NAME) done.\033[0m"
 
 $(OBJ_DIR) :
 	@mkdir $(OBJ_DIR)
@@ -91,13 +94,11 @@ lib:
 	@(cd $(DIR_MLXJI) && $(MAKE))
 
 clean:
-	@echo "\033[31mDelete .o of $(NAME)\033[0m"
 	@/bin/rm -rf $(OBJ_DIR)
 	@(cd $(DIR_LFT) && make clean)
 	@(cd $(DIR_MLXJI) && make clean)
 
 fclean: clean
-	@echo "\033[31mDelete .o and $(NAME)\033[0m"
 	@/bin/rm -f $(NAME)
 	@(cd $(DIR_LFT) && make fclean)
 	@(cd $(DIR_MLXJI) && make fclean)

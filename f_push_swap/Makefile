@@ -6,7 +6,7 @@
 #    By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/02 18:45:43 by ntoniolo          #+#    #+#              #
-#    Updated: 2017/06/04 22:16:56 by ntoniolo         ###   ########.fr        #
+#    Updated: 2017/06/05 00:05:51 by ntoniolo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ all: lib $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJ_GRAPH) $(addprefix $(OBJ_DIR), $(OBJET_PS)) $(addprefix $(OBJ_GRAPH), $(OBJET_GRAPH)) $(INC_FILES)
 	@$(CC) -I$(INC) $(addprefix $(OBJ_DIR), $(OBJET_PS)) $(addprefix $(OBJ_GRAPH), $(OBJET_GRAPH)) -L./$(DIR_LFT)  -lft -o $(NAME)
+	@echo "\033[4m\033[1m\033[32m>$(NAME) done.\033[0m"
 
 $(OBJ_DIR) :
 	@mkdir $(OBJ_DIR)
@@ -101,12 +102,10 @@ lib:
 	@(cd $(DIR_LFT) && $(MAKE))
 
 clean:
-	@echo "Delete .o"
 	@/bin/rm -rf $(OBJ_DIR)
 	@(cd $(DIR_LFT) && make clean)
 
 fclean: clean
-	@echo "Delete $(NAME)"
 	@/bin/rm -f $(NAME)
 	@(cd $(DIR_LFT) && make fclean)
 
