@@ -6,125 +6,13 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:54:44 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/23 00:23:43 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/04 18:31:49 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	verif_doublon(t_env *e)
-{
-	t_list	*i;
-	t_list	*j;
-
-	i = e->p_a;
-	while (i)
-	{
-		j = i->next;
-		while (j)
-		{
-			if (*(int*)(i->content) == *(int*)(j->content))
-				return (0);
-			j = j->next;
-		}
-		i = i->next;
-	}
-	return (1);
-}
-
-static int	init_env(t_env *e, int nb_arg, char **argv)
-{
-	int		i, j;
-	t_pi	tmp;
-	char	**c_tmp;
-
-	c_tmp = NULL;
-	e->nb_arg = nb_arg - 1 - e->nb_flag;
-	i = e->nb_flag;
-	while (i < e->nb_arg + e->nb_flag)
-	{
-		c_tmp = ft_strsplit(argv[i + 1], ' ');
-		if (!ft_isnumber(c_tmp))
-			return (ft_error("Enrtrez des nombres !\n"));
-		j = 0;
-		while (c_tmp[j])
-		{
-			ft_bzero(&tmp, sizeof(t_pi));
-			tmp.nb = ft_atoi(c_tmp[j]);
-			ft_lstinsert(&e->p_a, ft_lstnew(&tmp, sizeof(t_pi*)));
-			ft_strdel(&c_tmp[j]);
-			j++;
-			e->nb_a++;
-		}
-		free(c_tmp);
-		c_tmp = NULL;
-		i++;
-	}
-	if (!verif_doublon(e))
-		return (ft_error("Doublon.\n"));
-	crea_var(e);
-	return (1);
-}
-
-static void free_env(t_env *e)
-{
-	t_list	*lst_past;
-	t_list	*lst;
-	lst_past = NULL;
-	lst = e->solve;
-	while (lst)
-	{
-		if (lst_past)
-			free(lst_past);
-		free(lst->content);
-		lst_past = lst;
-		lst = lst->next;
-	}
-	if (lst_past)
-		free(lst_past);
-
-	lst_past = NULL;
-	lst = e->final_solve;
-	while (lst)
-	{
-		if (lst_past)
-			free(lst_past);
-		free(lst->content);
-		lst_past = lst;
-		lst = lst->next;
-	}
-	if (lst_past)
-		free(lst_past);
-
-
-
-	lst_past = NULL;
-	lst = e->p_a;
-	while (lst)
-	{
-		if (lst_past)
-			free(lst_past);
-		free(lst->content);
-		lst_past = lst;
-		lst = lst->next;
-	}
-	if (lst_past)
-		free(lst_past);
-	lst_past = NULL;
-	lst = e->p_b;
-	while (lst)
-	{
-		if (lst_past)
-			free(lst_past);
-		free(lst->content);
-		lst_past = lst;
-		lst = lst->next;
-	}
-	if (lst_past)
-		free(lst_past);
-	free(e->tab);
-}
-
+//-10pb
 int		make_flag(t_env *e, int argc, char **argv)
 {
 	int i;
@@ -165,8 +53,8 @@ int		main(int argc, char **argv)
 		return (0);
 	sort_tab(&e);
 	loop_check(&e);
-	if (e.flag & FLAG_N)
-		graph_main(&e);
+	if (e.flag & FLAG_V)
+		aff_final(&e);
 	free_env(&e);
 	return (0);
 }

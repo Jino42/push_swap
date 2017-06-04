@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:55:54 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/22 21:18:51 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/04 18:32:25 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # define HEIGHT 1000
 
 # include "../../libft/includes/ft_printf.h"
-# include "../../libmlxji/includes/mlxji.h"
-# include <mlx.h>
 
 # define NB_1(lst) (((t_pi*)(lst->content))->nb)
 # define NB_2(lst) (((t_pi*)(lst->next->content))->nb)
@@ -30,6 +28,8 @@
 # define FLAG_V (1 << 1)
 # define FLAG_N (1 << 2)
 # define SORTED (1 << 3)
+
+# define NB_ALGO 3
 
 # define NB_OP 11
 # define SA 0 
@@ -58,21 +58,19 @@ typedef struct		s_env
 	int			nb_op;
 	int			cur_grp;
 	int			nb_a;
-	t_list			*p_a;
+	int			*base;
+	int			res[10];
+	t_list		*p_a;
 	int			nb_b;
-	t_list			*p_b;
+	t_list		*p_b;
 	char		op[NB_OP][4];
 	int			(*exec[NB_OP])(struct s_env *e);
+	int			(*tab_algo[NB_ALGO])(struct s_env *e);
 	t_list		*solve;
-	t_list		*final_solve;
+	t_list		*final_solve[NB_ALGO];
 	int			*tab;
 	char		flag;
 	char		nb_flag;
-
-	void		*mlx;
-	void		*win;
-	t_img		*img;
-	int			key[269];
 }					t_env;
 
 void 	print_tab(int *tab, int size);
@@ -82,33 +80,32 @@ int		ft_error(char *str);
 t_list	*ft_lstlast(t_list *l);
 void	ft_remove_index_lst(t_list **l, size_t size, void (*f)(void *, size_t));
 
+int		init_env(t_env *e, int nb, char **argv);
 int		sort_tab(t_env *e);
 int		size_grp(t_list *l);
 void	print_pile(t_env *e);
 void	del_lst_pile(void *ptr, size_t size);
-int		join_op(t_env *e);
 
 int		loop_check(t_env *e);
 int		find_mediane(t_list *l, int size);
+int		find_place(t_env *e, int nb);
 void	do_op(t_env *e, int op, char flag);
+void	aff_final(t_env *e);
 
 void        crea_var(t_env *e);
 int			verif_order(t_env *e);
 
+int			reverse(t_env *e);
+
 int			my_algo(t_env *e);
+int			little_algo_1(t_env *e);
+int			little_algo_2(t_env *e);
 
 int			algo_p_a(t_env *e);
 int			case_a(t_env *e, int size);
 
 int			algo_p_b(t_env *e);
 int			case_b(t_env *e, int size);
-
-int			graph_loop(t_env *e);
-int			graph_main(t_env *e);
-int			graph_key_on(int keycode, t_env *e);
-int			graph_key_off(int keycode, t_env *e);
-int			graph_aff(t_env *e);
-void		graph_case(t_env *e, t_pxtopx *to, t_px *px);
 
 int			op_sa(t_env *e);
 int			op_sb(t_env *e);
@@ -122,5 +119,8 @@ int			op_rra(t_env *e);
 int			op_rrb(t_env *e);
 int			op_rrr(t_env *e);
 
+void		free_lst(t_env *e, t_list *l);
+void		free_env(t_env *e);
+void		free_init_algo(t_env *e);
 
 #endif

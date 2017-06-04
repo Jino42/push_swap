@@ -6,11 +6,18 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 18:51:47 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/15 23:59:12 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/04 17:49:37 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	crea_tab_algo(t_env *e)
+{
+	e->tab_algo[0] = &my_algo;
+	e->tab_algo[1] = &little_algo_1;
+	e->tab_algo[2] = &little_algo_2;
+}
 
 void		crea_var(t_env *e)
 {
@@ -36,4 +43,5 @@ void		crea_var(t_env *e)
 	e->exec[9] = &op_rrb;
 	strcpy(e->op[10], "rrr");
 	e->exec[10] = &op_rrr;
+	crea_tab_algo(e);
 }

@@ -6,7 +6,7 @@
 #    By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/02 18:45:43 by ntoniolo          #+#    #+#              #
-#    Updated: 2017/05/22 21:18:28 by ntoniolo         ###   ########.fr        #
+#    Updated: 2017/06/04 18:29:01 by ntoniolo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,33 +21,34 @@ LIB_MLX = -L./../libmlxji/ -lmlxji -L/usr/local/lib/ -I/usr/local/include -lmlx 
 
 SRC_PS = main.c \
 		 to_libft.c \
+		 pars.c \
 		 loop_check.c \
 		 ft_remove_index_lst.c \
 		 instruction_swap.c \
 		 instruction_rotate.c \
 		 instruction_reverse_rotate.c \
+		 find_place.c \
 		 ft_lstlast.c \
 		 instruction_push.c \
 		 find_mediane.c \
 		 size_grp.c \
 		 do_op.c \
 		 verif_order.c \
+		 aff_final.c \
 		 print_pile.c \
 		 algo_p_a.c \
 		 algo_p_b.c \
-		 join_op.c \
 		 sort_tab.c \
 		 crea_var.c \
 		 my_algo.c \
 		 case_p_a.c \
+		 reverse.c \
+		 little_algo_1.c \
+		 little_algo_2.c \
+		 free_env.c \
 		 case_p_b.c
 
-SRC_GRAPH = graph_main.c \
-			graph_loop.c \
-			graph_key_on.c \
-			graph_aff.c \
-			graph_case.c \
-			graph_key_off.c
+SRC_GRAPH =
 
 SRC_DIR = srcs/
 GRAPH_DIR = srcs/graph/
@@ -69,7 +70,7 @@ OBJ_GRAPH = objs/graph/
 all: start lib $(NAME) end
 
 $(NAME): $(OBJ_DIR) $(OBJ_GRAPH) $(addprefix $(OBJ_DIR), $(OBJET_PS)) $(addprefix $(OBJ_GRAPH), $(OBJET_GRAPH)) $(INC_FILES)
-	@$(CC) -I$(INC) $(addprefix $(OBJ_DIR), $(OBJET_PS)) $(addprefix $(OBJ_GRAPH), $(OBJET_GRAPH)) -L./$(DIR_LFT) $(LIB_MLX) -lft -o $(NAME)
+	@$(CC) -I$(INC) $(addprefix $(OBJ_DIR), $(OBJET_PS)) $(addprefix $(OBJ_GRAPH), $(OBJET_GRAPH)) -L./$(DIR_LFT)  -lft -o $(NAME)
 
 $(OBJ_DIR) :
 	@mkdir $(OBJ_DIR)

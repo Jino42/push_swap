@@ -1,85 +1,84 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_p_a.c                                         :+:      :+:    :+:   */
+/*   reverse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/19 00:18:19 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/04 01:52:51 by ntoniolo         ###   ########.fr       */
+/*   Created: 2017/06/03 22:46:34 by ntoniolo          #+#    #+#             */
+/*   Updated: 2017/06/04 01:49:44 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	trick(t_env *e)
+static int	r_come_back(t_env *e, int nb_rb)
 {
-	if (e->tab[e->nb_sort] == ((t_pi*)(e->p_a->content))->nb)
+	while (nb_rb)
 	{
-		do_op(e, RA, e->flag | SORTED);
-		return (1);
-	}
-	if (e->nb_a > 1 && e->tab[e->nb_sort] == ((t_pi*)(e->p_a->next->content))->nb)
-	{
-		do_op(e, SA, e->flag);
-		do_op(e, RA, e->flag | SORTED);
-		return (1);
-	}
-	return (0);
-}
-
-static int	come_back(t_env *e, int nb_ra)
-{
-	while (nb_ra && e->nb_sort)
-	{
-		do_op(e, RRA, e->flag);
-		nb_ra--;
+		do_op(e, RB, e->flag);
+		nb_rb--;
 	}
 	return (1);
 }
 
-static int	cut_p_a(t_env *e, int pivot, int grp)
+static int	r_cut_p_a(t_env *e, int pivot, int grp)
 {
 	t_pi	*pi;
-	int		nb_ra;
+	int		nb_rb;
 
-	nb_ra = 0;
-	while (1)
+	nb_rb = 0;
+	ft_printf("Pivot : %i\n", pivot);
+	while (e->nb_a)
 	{
 		pi = e->p_a->content;
 		if (pi->grp != grp)
-			return (come_back(e, nb_ra));
-		if (pi->nb > pivot)
+			return (r_come_back(e, nb_rb));
+		if (pi->nb < pivot)
 		{
 			pi->grp = e->cur_grp + 1;
 			do_op(e, RA, e->flag);
-			nb_ra++;
 		}
 		else
 		{
+			nb_rb++;
 			pi->grp = e->cur_grp + 2;
 			do_op(e, PB, e->flag);
 		}
 	}
-	return (1);
+	return (r_come_back(e, nb_rb));
 }
 
-int			algo_p_a(t_env *e)
+int			r_p_a(t_env *e)
 {
 	int		size;
 
 	if (((t_pi*)(e->p_a->content))->grp == -1)
 		return (1);
 	size = size_grp(e->p_a);
-	if (size <= 3)
+	//if (trick(e))
+	//	return (1);
+	r_cut_p_a(e,
+			find_mediane(e->p_a, size),
+			((t_pi*)(e->p_a->content))->grp);
+	return (1);
+}
+
+int			r_p_b(t_env *e)
+{
+	(void)e;
+	return (1);
+}
+
+int			reverse(t_env *e)
+{
+	if (e->nb_a && ((t_pi*)(e->p_a->content))->grp != -1)
 	{
-		if (case_a(e, size))
-			return (1);
+		ft_printf("Lol %i \n", ((t_pi*)(e->p_a->content))->grp);
+		r_p_a(e);
 	}
-	if (trick(e))
-		return (1);
-	cut_p_a(e,
-	find_mediane(e->p_a, size),
-	((t_pi*)(e->p_a->content))->grp);
+	else
+		r_p_b(e);
+	e->cur_grp += 3;
 	return (1);
 }
