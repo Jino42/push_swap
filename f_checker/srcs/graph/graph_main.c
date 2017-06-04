@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 14:55:27 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/04 23:23:11 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/05 00:41:24 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ int			graph_main(t_env *e)
 	mlx_key_hook(e->win, &graph_key_off, e);
 	mlx_loop_hook(e->mlx, &graph_loop, e);
 	mlx_loop(e->mlx);
+	if (e->img)
+		free(e->img);
 	return (1);
 }

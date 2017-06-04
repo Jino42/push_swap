@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 18:36:03 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/04 23:22:20 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/05 00:52:01 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int			loop_check(t_env *e)
 			i++;
 		}
 		if (i != 43)
-			return (ft_error("Error\n"));
+		{
+			ft_strdel(&buff);
+			return(ft_error("Error\n"));
+		}
 		if (e->flag & FLAG_V)
 			print_pile(e);
 		ft_strdel(&buff);

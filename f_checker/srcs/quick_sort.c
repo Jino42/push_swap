@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/04 22:15:18 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/04 22:19:47 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/05 00:53:07 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void			quick_sort(int *tab, int start, int end)
 
 	left = start;
 	right = end;
-	pivot = tab[start];
 	if (start >= end)
 		return ;
+	pivot = tab[start];
 	while (1)
 	{
 		while (tab[right] > pivot)

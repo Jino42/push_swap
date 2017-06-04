@@ -6,13 +6,11 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:54:44 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/04 21:48:31 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/05 00:08:47 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//-10pb
 
 int		make_flag(t_env *e, int argc, char **argv)
 {
