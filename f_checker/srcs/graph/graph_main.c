@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 14:55:27 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/03 20:28:00 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/04 23:23:11 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ void		make_space(t_env *e)
 	e->height = (size_y * e->nb_arg) + 2;
 	e->width = (size_x * e->nb_arg) + 2;
 	e->width *= 2;
-	ft_printf("Nb %i\nSize_x = %i\nSize_y = %i\nH%i W%i\n", e->nb_arg,size_x, size_y, e->height, e->width);
+	if (e->flag & FLAG_V)
+		ft_printf("Nb %i\nSize_x = %i\nSize_y = %i\nH%i W%i\n",
+				e->nb_arg, size_x, size_y, e->height, e->width);
 }
 
 int			graph_main(t_env *e)
@@ -30,7 +32,8 @@ int			graph_main(t_env *e)
 	make_space(e);
 	e->mlx = mlx_init();
 	e->img = mlxji_new_img(e->mlx, e->width, e->height);
-	e->win = mlx_new_window(e->mlx, e->width, e->height, "Push_me Aie Aie Aie ! <3");
+	e->win = mlx_new_window(e->mlx, e->width, e->height,
+						"Push_me Aie Aie Aie ! <3");
 	e->cur = -1;
 	e->p_a = e->tmp;
 	mlx_hook(e->win, 2, 0, &graph_key_on, e);

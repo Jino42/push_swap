@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 05:17:29 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/04 01:07:40 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/04 22:17:19 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			sort_tab(t_env *e)
 {
-	int i, j;
+	int		i;
 	t_list	*l;
 
 	l = e->p_a;
@@ -27,20 +27,6 @@ int			sort_tab(t_env *e)
 		i++;
 		l = l->next;
 	}
-	i = 0;
-	while (i < e->nb_a)
-	{
-		j = i + 1;
-		while (j < e->nb_a)
-		{
-			if (e->tab[i] > e->tab[j])
-			{
-				SWAP(e->tab[i], e->tab[j]);
-				i = 0;
-			}
-			j++;
-		}
-		i++;
-	}
+	quick_sort(e->tab, 0, e->nb_arg - 1);
 	return (1);
 }

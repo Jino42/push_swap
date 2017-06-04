@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 00:18:19 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/04 01:52:51 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/04 19:05:41 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static int	trick(t_env *e)
 		do_op(e, RA, e->flag | SORTED);
 		return (1);
 	}
-	if (e->nb_a > 1 && e->tab[e->nb_sort] == ((t_pi*)(e->p_a->next->content))->nb)
+	if (e->nb_a > 1 && e->tab[e->nb_sort] ==
+				((t_pi*)(e->p_a->next->content))->nb)
 	{
 		do_op(e, SA, e->flag);
 		do_op(e, RA, e->flag | SORTED);

@@ -6,7 +6,7 @@
 #    By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/02 18:45:43 by ntoniolo          #+#    #+#              #
-#    Updated: 2017/06/04 18:42:08 by ntoniolo         ###   ########.fr        #
+#    Updated: 2017/06/04 22:16:56 by ntoniolo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,10 @@ SRC_PS = main.c \
 		 crea_var.c \
 		 do_op.c \
 		 tool/to_libft.c \
+		 tool/quick_sort.c \
+		 tool/print_ret.c \
+		 tool/take_number.c \
+		 tool/print_pile.c \
 		 tool/ft_remove_index_lst.c \
 		 tool/find_mediane.c \
 		 tool/size_grp.c \
@@ -34,7 +38,6 @@ SRC_PS = main.c \
 		 tool/sort_tab.c \
 		 tool/find_place.c \
 		 tool/ft_lstlast.c \
-		 tool/print_pile.c \
 		 instruction/instruction_swap.c \
 		 instruction/instruction_rotate.c \
 		 instruction/instruction_reverse_rotate.c \
@@ -66,7 +69,7 @@ OBJ_GRAPH = objs/graph/
 
 .PHONY: all, clean, fclean, re, $(NAME), lft, start, end
 
-all: start lib $(NAME) end
+all: lib $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJ_GRAPH) $(addprefix $(OBJ_DIR), $(OBJET_PS)) $(addprefix $(OBJ_GRAPH), $(OBJET_GRAPH)) $(INC_FILES)
 	@$(CC) -I$(INC) $(addprefix $(OBJ_DIR), $(OBJET_PS)) $(addprefix $(OBJ_GRAPH), $(OBJET_GRAPH)) -L./$(DIR_LFT)  -lft -o $(NAME)
@@ -98,12 +101,12 @@ lib:
 	@(cd $(DIR_LFT) && $(MAKE))
 
 clean:
-	@echo "\033[31mDelete .o of $(NAME)\033[0m"
+	@echo "Delete .o"
 	@/bin/rm -rf $(OBJ_DIR)
 	@(cd $(DIR_LFT) && make clean)
 
 fclean: clean
-	@echo "\033[31mDelete .o and $(NAME)\033[0m"
+	@echo "Delete $(NAME)"
 	@/bin/rm -f $(NAME)
 	@(cd $(DIR_LFT) && make fclean)
 

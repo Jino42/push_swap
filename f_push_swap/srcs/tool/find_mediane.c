@@ -6,34 +6,11 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 23:41:12 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/22 19:49:11 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/04 22:19:16 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	bubble_sort(int size, int tab[size])
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < size)
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (tab[i] > tab[j])
-			{
-				SWAP(tab[i], tab[j]);
-				i = 0;
-			}
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
 
 int			find_mediane(t_list *l, int size)
 {
@@ -47,6 +24,6 @@ int			find_mediane(t_list *l, int size)
 		i++;
 		l = l->next;
 	}
-	bubble_sort(size, tab);
+	quick_sort(tab, 0, size - 1);
 	return (tab[i / 2]);
 }

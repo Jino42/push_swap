@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/04 16:40:14 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/04 18:22:07 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/04 18:45:08 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		free_env(t_env *e)
 	free_lst(e, e->p_a);
 	free_lst(e, e->p_b);
 	free_lst(e, e->solve);
-	i =  0;
+	i = 0;
 	while (i < NB_ALGO)
 	{
 		free_lst(e, e->final_solve[i]);
@@ -31,7 +31,7 @@ void		free_env(t_env *e)
 	}
 }
 
-void	free_init_algo(t_env *e)
+void		free_init_algo(t_env *e)
 {
 	free_lst(e, e->p_a);
 	e->p_a = NULL;
@@ -39,7 +39,7 @@ void	free_init_algo(t_env *e)
 	e->p_b = NULL;
 }
 
-void	free_lst(t_env *e, t_list *need2free)
+void		free_lst(t_env *e, t_list *need2free)
 {
 	t_list *lst;
 	t_list *lst_past;

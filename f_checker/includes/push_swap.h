@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:55:54 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/03 20:16:09 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/04 23:13:45 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,17 @@ typedef struct		s_env
 }					t_env;
 
 void 	print_tab(int *tab, int size);
-void 	print_list(t_list *l);
 int		ft_isnumber(char **str);
 int		ft_error(char *str);
 t_list	*ft_lstlast(t_list *l);
 void	ft_remove_index_lst(t_list **l, size_t size, void (*f)(void *, size_t));
+void	quick_sort(int *tab, int start, int end);
 
 int		sort_tab(t_env *e);
 void	print_pile(t_env *e);
+void        free_lst(t_env *e, t_list *need2free);
+void        free_env(t_env *e);
+int  init_env(t_env *e, int nb_arg, char **argv);
 void	del_lst_pile(void *ptr, size_t size);
 
 int		loop_check(t_env *e);

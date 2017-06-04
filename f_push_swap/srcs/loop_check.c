@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 18:36:03 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/04 18:25:18 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/04 18:45:19 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void		save_solve(t_env *e, int cur)
 int				loop_check(t_env *e)
 {
 	int i;
+
 	i = 0;
 	if (e->nb_arg > 10)
 	{

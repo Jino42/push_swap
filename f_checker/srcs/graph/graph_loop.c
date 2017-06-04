@@ -6,31 +6,14 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 15:40:28 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/23 04:03:48 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/04 23:04:16 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
-int			graph_loop(t_env *e)
+static void	graph_loop_go(t_env *e, t_list *lst)
 {
-	t_list		*lst;
-	int			i;
-
-	i = 0;
-	lst = e->solve;
-
-	while (i < e->cur)
-	{
-		i++;
-		lst = lst->next;
-	}
-	if (e->neg)
-	{
-		e->cur--;
-		e->neg = 0;
-	}
 	if (e->go)
 	{
 		if (e->cur < e->nb_op)
@@ -52,6 +35,26 @@ int			graph_loop(t_env *e)
 				e->exec_neg[*((int*)(lst->content))](e);
 		}
 	}
+}
+
+int			graph_loop(t_env *e)
+{
+	t_list		*lst;
+	int			i;
+
+	i = 0;
+	lst = e->solve;
+	while (i < e->cur)
+	{
+		i++;
+		lst = lst->next;
+	}
+	if (e->neg)
+	{
+		e->cur--;
+		e->neg = 0;
+	}
+	graph_loop_go(e, lst);
 	e->one_up = 0;
 	graph_aff(e);
 	return (1);

@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop_check.c                                       :+:      :+:    :+:   */
+/*   take_number.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/15 18:36:03 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/04 23:22:20 by ntoniolo         ###   ########.fr       */
+/*   Created: 2017/06/04 20:37:09 by ntoniolo          #+#    #+#             */
+/*   Updated: 2017/06/04 20:38:54 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
-int			loop_check(t_env *e)
+int			nb_1(t_list *l)
 {
-	char	*buff;
-	int		i;
+	return ((((t_pi*)(l->content))->nb));
+}
 
-	while (!verif_order(e))
-	{
-		get_next_line(0, &buff);
-		i = 0;
-		while (buff && i < NB_OP)
-		{
-			if (!ft_strcmp(buff, e->op[i]))
-			{
-				do_op(e, i);
-				i = 42;
-			}
-			i++;
-		}
-		if (i != 43)
-			return (ft_error("Error\n"));
-		if (e->flag & FLAG_V)
-			print_pile(e);
-		ft_strdel(&buff);
-	}
-	return (1);
+int			nb_2(t_list *l)
+{
+	return ((((t_pi*)(l->next->content))->nb));
+}
+
+int			nb_3(t_list *l)
+{
+	return ((((t_pi*)(l->next->next->content))->nb));
 }

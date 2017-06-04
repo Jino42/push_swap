@@ -1,33 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aff_final.c                                        :+:      :+:    :+:   */
+/*   free_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/04 18:23:27 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/04 21:34:52 by ntoniolo         ###   ########.fr       */
+/*   Created: 2017/06/04 16:40:14 by ntoniolo          #+#    #+#             */
+/*   Updated: 2017/06/04 23:14:33 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		aff_final(t_env *e)
+void		free_env(t_env *e)
 {
-	t_list	*l;
-	int		i;
+	if (e->tab)
+		free(e->tab);
+	free_lst(e, e->p_a);
+	free_lst(e, e->p_b);
+	free_lst(e, e->solve);
+}
 
-	i = 0;
-	while (i < NB_ALGO)
+void		free_lst(t_env *e, t_list *need2free)
+{
+	t_list *lst;
+	t_list *lst_past;
+
+	(void)e;
+	lst_past = NULL;
+	lst = need2free;
+	if (lst == NULL)
+		return ;
+	while (lst)
 	{
-		l = e->final_solve[i];
-		ft_printf("\nAlgo %i : [%i]\n", i, e->res[i]);
-		while (l)
-		{
-			ft_printf("%4s-", e->op[*((int*)(l->content))]);
-			l = l->next;
-		}
-		i++;
+		if (lst_past)
+			free(lst_past);
+		free(lst->content);
+		lst_past = lst;
+		lst = lst->next;
 	}
-	ft_printf("\n");
+	if (lst_past)
+		free(lst_past);
+	lst_past = NULL;
 }

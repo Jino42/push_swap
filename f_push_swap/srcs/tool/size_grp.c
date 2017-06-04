@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 23:44:26 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/19 01:22:20 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/04 18:47:35 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int			size_grp(t_list *l)
 {
-	t_pi *pi;
-	int save;
-	int i;
+	t_pi	*pi;
+	int		save;
+	int		i;
 
 	pi = l->content;
 	save = (pi)->grp;

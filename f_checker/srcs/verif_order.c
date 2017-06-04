@@ -6,13 +6,13 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 05:35:47 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/19 05:51:06 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/04 23:04:45 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int verif_order(t_env *e)
+int	verif_order(t_env *e)
 {
 	t_list	*i;
 
