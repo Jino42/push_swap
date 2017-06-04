@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 18:29:14 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/05/21 15:33:36 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/04 18:43:19 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int ft_error(char *str)
 
 void	del_lst_pile(void *ptr, size_t size)
 {
-	(void)size;
-	free(ptr);
-	ptr = NULL;
+		(void)size;
+			free(ptr);
+				ptr = NULL;
 }
