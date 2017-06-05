@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:55:54 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/04 22:46:31 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/05 21:27:00 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void			ft_remove_index_lst(t_list **l, size_t size,
 								void (*f)(void *, size_t));
 
 int				init_env(t_env *e, int nb, char **argv);
+int				ft_check_max_int(char *str);
 int				sort_tab(t_env *e);
 int				size_grp(t_list *l);
 

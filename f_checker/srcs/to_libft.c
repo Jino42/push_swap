@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 18:29:14 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/04 19:01:19 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/05 19:38:59 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		ft_isnumber(char **str)
 
 int		ft_error(char *str)
 {
-	ft_printf("%s", str);
+	ft_putstr_fd(str, 2);
 	return (0);
 }
 

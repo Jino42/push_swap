@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:54:44 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/05 00:51:25 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/05 19:40:05 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int		make_flag(t_env *e, int argc, char **argv)
 int		main(int argc, char **argv)
 {
 	t_env	e;
+	int		ret;
 
 	if (argc == 1)
 		return (ft_error("Error\n"));
@@ -55,9 +56,10 @@ int		main(int argc, char **argv)
 	if (!(init_env(&e, argc, argv)))
 		return (0);
 	sort_tab(&e);
-	if (loop_check(&e))
+	ret = loop_check(&e);
+	if (ret == 1)
 		ft_printf("OK\n");
-	else
+	else if (ret == -1)
 		ft_printf("KO\n");
 	free_env(&e);
 	return (0);

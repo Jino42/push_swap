@@ -6,7 +6,7 @@
 #    By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/02 18:45:43 by ntoniolo          #+#    #+#              #
-#    Updated: 2017/06/05 00:05:51 by ntoniolo         ###   ########.fr        #
+#    Updated: 2017/06/05 21:24:09 by ntoniolo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC_PS = main.c \
 		 crea_var.c \
 		 do_op.c \
 		 tool/to_libft.c \
+		 tool/ft_check_max_int.c \
 		 tool/quick_sort.c \
 		 tool/print_ret.c \
 		 tool/take_number.c \

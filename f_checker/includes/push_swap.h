@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:55:54 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/05 00:51:40 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/05 21:33:44 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # include "../../libft/includes/ft_printf.h"
 # include "../../libmlxji/includes/mlxji.h"
+# include <limits.h>
 # include <mlx.h>
 
 # define FLAG_V (1 << 1)
@@ -87,6 +88,7 @@ void			ft_remove_index_lst(t_list **l, size_t size,
 void			quick_sort(int *tab, int start, int end);
 
 int				sort_tab(t_env *e);
+int				ft_check_max_int(char *str);
 void			print_pile(t_env *e);
 void			free_lst(t_env *e, t_list *need2free);
 void			free_env(t_env *e);

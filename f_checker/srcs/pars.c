@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/04 23:10:38 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/05 00:34:05 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/05 21:34:22 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ static void	pars(t_env *e, int nb_arg, char **argv)
 	while (i < e->nb_arg + e->nb_flag)
 	{
 		c_tmp = ft_strsplit(argv[i + 1], ' ');
-		if (!ft_isnumber(c_tmp))
-			exit(ft_error("Entrez des nombres !\n"));
 		j = -1;
 		while (c_tmp[++j])
 		{
+			if (!ft_isnumber(c_tmp) || !ft_check_max_int(c_tmp[j]))
+				exit(ft_error("Error\n"));
 			ft_bzero(&tmp, sizeof(t_pi));
 			tmp.nb = ft_atoi(c_tmp[j]);
 			ft_lstinsert(&e->p_a, ft_lstnew(&tmp, sizeof(t_pi*)));
@@ -63,9 +63,9 @@ static void	pars(t_env *e, int nb_arg, char **argv)
 
 int			init_env(t_env *e, int nb_arg, char **argv)
 {
-	if (!verif_doublon(e))
-		return (ft_error("Doublon.\n"));
 	pars(e, nb_arg, argv);
+	if (!verif_doublon(e))
+		return (ft_error("Error\n"));
 	crea_var(e);
 	e->nb_arg = e->nb_a;
 	return (1);

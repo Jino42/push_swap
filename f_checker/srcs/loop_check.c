@@ -6,11 +6,17 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 18:36:03 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/05 00:52:01 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/05 19:43:03 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+static int	del_error(char *buff)
+{
+	ft_strdel(&buff);
+	return (ft_error("Error\n"));
+}
 
 int			loop_check(t_env *e)
 {
@@ -20,6 +26,8 @@ int			loop_check(t_env *e)
 	while (!verif_order(e))
 	{
 		get_next_line(0, &buff);
+		if (!ft_strcmp(buff, ""))
+			return (-1);
 		i = 0;
 		while (buff && i < NB_OP)
 		{
@@ -31,10 +39,7 @@ int			loop_check(t_env *e)
 			i++;
 		}
 		if (i != 43)
-		{
-			ft_strdel(&buff);
-			return(ft_error("Error\n"));
-		}
+			return (del_error(buff));
 		if (e->flag & FLAG_V)
 			print_pile(e);
 		ft_strdel(&buff);

@@ -6,7 +6,7 @@
 #    By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/02 18:45:43 by ntoniolo          #+#    #+#              #
-#    Updated: 2017/06/05 00:30:01 by ntoniolo         ###   ########.fr        #
+#    Updated: 2017/06/05 21:42:38 by ntoniolo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC_PS = main.c \
 		 verif_order.c \
 		 print_pile.c \
 		 quick_sort.c \
+		 ft_check_max_int.c \
 		 sort_tab.c \
 		 crea_var.c
 
@@ -47,6 +48,7 @@ SRC_PS_BONUS = main_bonus.c \
 		 loop_check.c \
 		 ft_remove_index_lst.c \
 		 instruction_swap.c \
+		 ft_check_max_int.c \
 		 instruction_rotate.c \
 		 instruction_reverse_rotate.c \
 		 ft_lstlast.c \
