@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:55:54 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/05 21:33:44 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/05 21:46:27 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 # define HEIGHT 1000
 
 # include "../../libft/includes/ft_printf.h"
-# include "../../libmlxji/includes/mlxji.h"
 # include <limits.h>
-# include <mlx.h>
 
 # define FLAG_V (1 << 1)
 # define FLAG_N (1 << 2)
@@ -62,21 +60,6 @@ typedef struct	s_env
 	int			*tab;
 	char		flag;
 	char		nb_flag;
-
-	void		*mlx;
-	void		*win;
-	t_img		*img;
-	int			key[269];
-	char		one_up;
-	char		graph_line;
-	int			cur;
-	int			go;
-	int			neg;
-	int			height;
-	int			width;
-	float		hue;
-	float		saturation;
-	float		value;
 }				t_env;
 
 void			print_tab(int *tab, int size);
@@ -100,15 +83,6 @@ void			do_op(t_env *e, int op);
 
 void			crea_var(t_env *e);
 int				verif_order(t_env *e);
-
-int				graph_loop(t_env *e);
-int				graph_main(t_env *e);
-int				graph_key_on(int keycode, t_env *e);
-int				graph_key_off(int keycode, t_env *e);
-int				graph_aff(t_env *e);
-void			graph_case(t_env *e, t_pxtopx *to, t_px *px);
-void			graph_p_b(t_env *e, int size_y, int size_x);
-void			graph_p_a(t_env *e, int size_y, int size_x);
 
 int				op_sa(t_env *e);
 int				op_sb(t_env *e);

@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 21:19:48 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/05 21:30:56 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/05 23:36:50 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static long int		ft_atol(const char *nptr)
 {
-	int i;
-	int sign;
-	long int nb;
+	int			i;
+	int			sign;
+	long int	nb;
 
 	nb = 0;
 	sign = 1;
@@ -38,7 +38,7 @@ static long int		ft_atol(const char *nptr)
 	return (nb);
 }
 
-int				ft_check_max_int(char *str)
+int					ft_check_max_int(char *str)
 {
 	long int	nb;
 	int			i;

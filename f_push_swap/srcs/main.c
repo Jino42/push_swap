@@ -6,7 +6,7 @@
 /*   By: ntoniolo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:54:44 by ntoniolo          #+#    #+#             */
-/*   Updated: 2017/06/05 19:44:24 by ntoniolo         ###   ########.fr       */
+/*   Updated: 2017/06/05 23:17:23 by ntoniolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ int		main(int argc, char **argv)
 	if (argc - e.nb_flag == 1)
 		return (ft_error("Error\n"));
 	if (!(init_env(&e, argc, argv)))
+	{
+		free_env(&e);
 		return (0);
+	}
 	sort_tab(&e);
 	loop_check(&e);
 	if (e.flag & FLAG_V)
